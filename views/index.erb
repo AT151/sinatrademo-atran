@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-    <html>
-        <body>
-            <ol>
-            <% file = File.open("cake.list") %>
-            <% file_data = file.readlines.map(&:chomp) %>
-            <% file_data.each do |x| %>
-                <li><%= x %></li>
-            <% end %>
-        </ol>
-        </body>
+<html>
+    <body>
+        <ol>
+        <% file = File.open("cake.list") %>
+        <% file_data = file.readlines.map(&:chomp) %>
+        <% file_data.each do |x| %>
+            <li><%= x %></li>
+        <% end %>
+    </ol>
+    </body>
 
-    </html>
+</html>
