@@ -1,0 +1,10 @@
+<html>
+    <body> 
+        <% cakeid = params["id"].to_i %>
+        <% result = DB[:cakelist].select(:name).where(id: cakeid).get(:name) %>
+        <h1><%= result %></h1>
+        <form action=<%= "/edit/#{cakeid}" %>>
+            <button type="submit">Edit</button>
+        </form>
+    </body>
+</html>
