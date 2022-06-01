@@ -8,7 +8,7 @@
             <script type = "text/javascript">
                 $.getJSON("/cake.json", function (data) {
                     $.each(data, function(key, val) {
-                        $(cakes).append("<li>" + val.name + "</li>");
+                        $(cakes).append("<li>" + "<a href=/show/" + val.id + ">" + val.name + "</li>");
                     });
                 });
             </script>
