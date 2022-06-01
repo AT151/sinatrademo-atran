@@ -1,14 +1,15 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'json'
+require 'sequel'
+
+DB = Sequel.connect('postgres://cakeuser:cakeuser@localhost:5432/cakes')
 
 get '/' do
   erb :index
 end
 
 get '/cake.json' do
-  file = File.open("cake.list") 
-  file_data = file.readlines.map(&:chomp)
-
-  file_data.to_json
+  result = DB[:cakelist]
+  return result.all.to_json
 end
