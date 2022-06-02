@@ -1,13 +1,14 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/activerecord'
+require './models/cake'
 require 'json'
 
 set :database_file, 'config/database.yml'
 
-class Cake < ActiveRecord::Base
-  validates :name, presence: true, uniqueness: true
-end
+# class Cake < ActiveRecord::Base
+#   validates :name, presence: true, uniqueness: true
+# end
 
 get '/' do
   erb :index
