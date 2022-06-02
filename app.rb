@@ -41,7 +41,7 @@ end
 
 # Update
 post '/update/:id' do
-  cake = Cake.find_by_id(params[:id])
+  cake = Cake.find(params[:id])
   if cake
     cake.update(name: params[:name])
     return erb :index
@@ -52,7 +52,7 @@ end
 
 # Destroy
 post '/destroy/:id' do
-  cake = Cake.find_by_id(params[:id])
+  cake = Cake.find(params[:id])
   if cake
     cake.destroy
     return erb :index

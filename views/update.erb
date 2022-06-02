@@ -1,6 +1,6 @@
 <html>
     <body> 
-        <% cake = Cake.find_by_id(params[:id])%>
+        <% cake = Cake.find(params[:id])%>
         <h1><%= cake.name %></h1>
         <form method="POST" action=<%= "/update/#{params[:id]}" %>>
             <label for="name">Update cake name:</label>
