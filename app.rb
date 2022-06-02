@@ -36,7 +36,7 @@ post '/updatesuccess/:id' do
   return erb :updatesuccess
 end
 
-post '/delete/:id' do
+post '/destroy/:id' do
   DB[:cakelist].where(id: params["id"]).delete
-  return erb :deletesuccess
+  return erb :destroysuccess
 end
