@@ -1,12 +1,11 @@
 <html>
     <body> 
-        <% cakeid = params["id"].to_i %>
-        <% result = DB[:cakelist].select(:name).where(id: cakeid).get(:name) %>
-        <h1><%= result %></h1>
-        <form action=<%= "/update/#{cakeid}" %>>
+        <% cake = Cake.find_by_id(params[:id])%>
+        <h1><%= cake.name %></h1>
+        <form action=<%= "/update/#{params[:id]}" %>>
             <button type="submit">Update</button>
         </form>
-        <form method="POST" action=<%= "/destroy/#{cakeid}" %>>
+        <form method="POST" action=<%= "/destroy/#{params[:id]}" %>>
             <button type="submit">Delete</button>
         </form>
     </body>

@@ -14,37 +14,53 @@ class Cake < ActiveRecord::Base
 end
 
 get '/' do
-  json Cake.select('id', 'name').all
+  erb :index
 end
 
-# get '/cake.json' do
-#   result = DB[:cakelist]
-#   return result.all.to_json
-# end
+get '/cake.json' do
+  return json Cake.select('id', 'name').all
+end
 
-# get '/show/:id' do
-#   erb :show
-# end
+get '/show/:id' do
+  erb :show
+end
 
-# get '/update/:id' do
-#   erb :update
-# end
+get '/update/:id' do
+  erb :update
+end
 
-# get '/new' do
-#   erb :new
-# end
+get '/new' do
+  erb :new
+end
 
-# post '/newsuccess' do
-#   DB[:cakelist].insert(name: params["cakename"])
-#   return erb :newsuccess
-# end
+# Create
+post '/' do
+  cake = Cake.create(params)
+  if cake
+    erb :index
+  else
+    halt 500
+  end
+end
 
-# post '/updatesuccess/:id' do
-#   DB[:cakelist].where(id: params["id"]).update(name: params["cakename"])
-#   return erb :updatesuccess
-# end
+# Update
+post '/update/:id' do
+  cake = Cake.find_by_id(params[:id])
+  if cake
+    cake.update(name: params[:name])
+    return erb :index
+  else
+    halt 404
+  end
+end
 
-# post '/destroy/:id' do
-#   DB[:cakelist].where(id: params["id"]).delete
-#   return erb :destroysuccess
-# end
+# Destroy
+post '/destroy/:id' do
+  cake = Cake.find_by_id(params[:id])
+  if cake
+    cake.destroy
+    return erb :index
+  else
+    halt 404
+  end
+end
