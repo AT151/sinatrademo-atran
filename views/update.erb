@@ -3,8 +3,8 @@
         <% cakeid = params["id"].to_i %>
         <% result = DB[:cakelist].select(:name).where(id: cakeid).get(:name) %>
         <h1><%= result %></h1>
-        <form method="POST" action=<%= "/editsuccess/#{cakeid}" %>>
-            <label for="cakename">Edit cake name:</label>
+        <form method="POST" action=<%= "/updatesuccess/#{cakeid}" %>>
+            <label for="cakename">Update cake name:</label>
             <input type="text" id="cakename" name="cakename"><br><br>
             <input type="submit" value="Submit">
         </form>

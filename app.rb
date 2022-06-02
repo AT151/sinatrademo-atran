@@ -18,8 +18,8 @@ get '/show/:id' do
   erb :show
 end
 
-get '/edit/:id' do
-  erb :edit
+get '/update/:id' do
+  erb :update
 end
 
 get '/new' do
@@ -31,9 +31,9 @@ post '/newsuccess' do
   return erb :newsuccess
 end
 
-post '/editsuccess/:id' do
+post '/updatesuccess/:id' do
   DB[:cakelist].where(id: params["id"]).update(name: params["cakename"])
-  return erb :editsuccess
+  return erb :updatesuccess
 end
 
 post '/delete/:id' do
